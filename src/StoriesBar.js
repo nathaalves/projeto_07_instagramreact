@@ -2,7 +2,7 @@ import Storie from "./Storie"
 
 export default function StoriesBar() {
 
-    let stories = [
+    const stories = [
         {image: "images/frodo.jpg", userName: "frodo.baggins"},
         {image: "images/aragorn.jpg", userName: "king_aragorn"},
         {image: "images/boromir.jpg", userName: "ofc_boromir_"},

@@ -1,4 +1,28 @@
+function Media({media}) {
+
+    const urlLength = media.length
+    let char = urlLength-1
+    let extention = ""
+
+    while (media[char] !== ".") {
+        extention = media[char] + extention
+        char--
+        if (char < 0) {
+            break
+        }
+    }
+
+    console.log(media)
+    console.log(extention)
+    
+    const isImage = extention === "gif" || extention === "jpg" || extention === "jpeg" || extention === "png" || extention === "svg" || extention === "webp"
+
+    return isImage ? <img src={media} /> : <video src={media} />
+}
+
+
 export default function Publication({userName, userImage, media, liked, likes}) {
+
     return (
         <div class="publication">
             <header>
@@ -15,7 +39,7 @@ export default function Publication({userName, userImage, media, liked, likes}) 
                 </div>    
             </header>
             <main class="publication-main">
-                <img src={media} />
+                <Media media={media}/>
             </main>
             <footer>
                 <div class="publication-footer">

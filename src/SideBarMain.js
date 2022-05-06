@@ -2,7 +2,7 @@ import Sugestion from "./Sugestion"
 
 export default function SideBarMain() {
 
-    let sugestions = [
+    const sugestions = [
         {image: "images/sauron.jpg", userName: "Sauron", name: "The Lord of The Darck"},
         {image: "images/nazgul.jpg", userName: "nazgul_number5", name: "Helm Hammerhead"},
         {image: "images/saruman.jpg", userName: "the_white", name: "Saruman"},
