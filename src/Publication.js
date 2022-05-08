@@ -30,15 +30,9 @@ export default function Publication({userName, userImage, media, liked, likes}) 
         setBtnUnLiked("Ride")
     }
 
-    function giveRemoveLike() {
-        
-        if (btnLiked === "Show") {
-            setBtnLiked("Ride")
-            setBtnUnLiked("Show")
-        } else {
-            setBtnLiked("Show")
-            setBtnUnLiked("Ride")
-        }
+    function removeLike() {
+        setBtnLiked("Ride")
+        setBtnUnLiked("Show")
     }
 
     return (
@@ -63,8 +57,8 @@ export default function Publication({userName, userImage, media, liked, likes}) 
                 <div class="publication-footer">
                     <div class="actions-bar">
                         <div>
-                            <span class={"liked" + " " + btnLiked} onClick={giveRemoveLike}><ion-icon name="heart"></ion-icon></span>
-                            <span class={"unLiked" + " " + btnUnLiked} onClick={giveRemoveLike}><ion-icon name="heart-outline"></ion-icon></span>
+                            <span class={"liked" + " " + btnLiked} onClick={removeLike}><ion-icon name="heart"></ion-icon></span>
+                            <span class={"unLiked" + " " + btnUnLiked} onClick={giveLike}><ion-icon name="heart-outline"></ion-icon></span>
                             <a href=""></a>
                             <a href="">
                                 <ion-icon name="chatbubble-outline"></ion-icon>
