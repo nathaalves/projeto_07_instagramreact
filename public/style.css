@@ -314,6 +314,23 @@ a {
     margin-top: 20px;
 }
 
+.liked {
+    color: red;
+}
+
+.unLiked {
+    color: black;
+}
+
+.Ride {
+    display: none;
+}
+
+.Show {
+    display: inline;
+}
+
+
 @media (max-width: 935px) {
 
     .side-bar {

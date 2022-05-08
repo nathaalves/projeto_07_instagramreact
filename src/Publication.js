@@ -1,27 +1,45 @@
-function Media({media}) {
-
-    const urlLength = media.length
-    let char = urlLength-1
-    let extention = ""
-
-    while (media[char] !== ".") {
-        extention = media[char] + extention
-        char--
-        if (char < 0) {
-            break
-        }
-    }
-
-    console.log(media)
-    console.log(extention)
-    
-    const isImage = extention === "gif" || extention === "jpg" || extention === "jpeg" || extention === "png" || extention === "svg" || extention === "webp"
-
-    return isImage ? <img src={media} /> : <video src={media} />
-}
-
+import React from 'react'
 
 export default function Publication({userName, userImage, media, liked, likes}) {
+
+    function Media({media}) {
+
+        const urlLength = media.length
+        let char = urlLength-1
+        let extention = ""
+    
+        while (media[char] !== ".") {
+            extention = media[char] + extention
+            char--
+            if (char < 0) {
+                break
+            }
+        }
+        
+        const isImage = extention === "gif" || extention === "jpg" || extention === "jpeg" || extention === "png" || extention === "svg" || extention === "webp"
+    
+        return isImage ? <img src={media} /> : <video muted controls autoplay src={media} />
+    }    
+    
+    
+    const [btnLiked, setBtnLiked] = React.useState("Ride")
+    const [btnUnLiked, setBtnUnLiked] = React.useState("Show")
+
+    function giveLike() {
+        setBtnLiked("Show")
+        setBtnUnLiked("Ride")
+    }
+
+    function giveRemoveLike() {
+        
+        if (btnLiked === "Show") {
+            setBtnLiked("Ride")
+            setBtnUnLiked("Show")
+        } else {
+            setBtnLiked("Show")
+            setBtnUnLiked("Ride")
+        }
+    }
 
     return (
         <div class="publication">
@@ -38,16 +56,16 @@ export default function Publication({userName, userImage, media, liked, likes}) 
                     </a>
                 </div>    
             </header>
-            <main class="publication-main">
+            <main class="publication-main" onClick={giveLike}>
                 <Media media={media}/>
             </main>
             <footer>
                 <div class="publication-footer">
                     <div class="actions-bar">
                         <div>
-                            <a href="">
-                                <ion-icon name="heart-outline"></ion-icon>
-                            </a>
+                            <span class={"liked" + " " + btnLiked} onClick={giveRemoveLike}><ion-icon name="heart"></ion-icon></span>
+                            <span class={"unLiked" + " " + btnUnLiked} onClick={giveRemoveLike}><ion-icon name="heart-outline"></ion-icon></span>
+                            <a href=""></a>
                             <a href="">
                                 <ion-icon name="chatbubble-outline"></ion-icon>
                             </a>
